@@ -19,7 +19,7 @@ import com.google.android.gms.gcm.GcmListenerService;
  */
 public class MyGCMListenerService extends GcmListenerService {
 
-    private static final String TAG = RegistrationIntentService.class.getSimpleName();
+    private static final String TAG = MyGCMListenerService.class.getSimpleName();
 
     @Override
     public void onMessageReceived(String from, Bundle data) {
