@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GcmPubSub;
@@ -56,6 +57,10 @@ public class RegistrationIntentService extends IntentService {
             // トークンの登録に失敗した際は、再度登録処理を行えるようにプリファレンスに失敗したことを保管する
             preferences.edit().putBoolean("SENT_TOKEN_TO_SERVER", false).apply();
         }
+
+        // 登録処理が終了したことを通知する
+        Intent registrationComplete = new Intent("REGISTRATION_COMPLETE");
+        LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
     }
 
     /**
